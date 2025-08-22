@@ -74,6 +74,7 @@ module pzbcm_round_robin_arbiter
     logic [COMPARE_WIDTH-1:0]         value;
 
     for (int i = 0;i < REQUESTS;++i) begin
+      value                = '0;
       value[0]            = use_round_robin && (INDEX_WIDTH'(i) > current_grant);
       value[REQUEST_LSB]  = request[i];
       if (WEIGHT_WIDTH > 0) begin

@@ -43,6 +43,13 @@ interface pzbcm_min_max_finder #(
     TYPE                next_data[ENTRIES];
     RESULT              result;
 
+    if (ENTRIES == 1) begin
+      result.location = '0;
+      result.location[0] = 1'b1;
+      result.data = data[0];
+      return result;
+    end
+
     for (int i = 0;i < DEPTH;++i) begin
       if (i == 0) begin
         current_n         = ENTRIES;
